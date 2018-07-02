@@ -1,0 +1,141 @@
+$fonts: Helvetica Neue, Helvetica;
+
+%boxvars {
+padding:70px;
+  margin-bottom:3px;
+  border:1px solid grey;
+}
+
+html {
+  font-family: $fonts;
+  font-size:20px;
+  margin:auto;
+  box-sizing:border-box;
+}
+
+body {
+  padding-top:80px;
+  text-align:center;
+  color: white;
+  background-image:url("http://delicious-fruit.com/img/footer_lodyas.png")
+}
+
+nav {
+    .navbar-brand{
+      color: white !important;
+      font-size:33px;
+      padding-top:20px;
+      margin-bottom:20px;
+    }
+}
+
+.night  {
+	        background:linear-gradient(to bottom,rgba(70,100,250,1) 0%, rgba(170,70,190,1) 120%);
+	        box-shadow: 1px 1px 30px rgba(81,50,168,1);
+}
+
+.white
+{
+  margin:5px;
+  color:white;
+}
+
+.greyspace {
+  background-color:#AAAAAA;
+  @extend %boxvars;
+}
+
+.whitespace {
+  color:#888;
+  background-color:#FFFFFF;
+  @extend %boxvars;
+}
+
+.intro{
+  text-align:left;
+}
+
+
+.selfie {
+    border: 1px solid grey;
+    max-height:300px;
+    max-width:300px;
+}
+.strike {
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size:40px;
+    }
+
+    .strike > span {
+        position: relative;
+        display: inline-block;
+    }
+
+    .strike > span:before,
+    .strike > span:after {
+        content: "";
+        position: absolute;
+        top: 43%;
+        width: 9999px;
+        height: 5px;
+        background: white;
+    }
+
+    .strike > span:before {
+        right: 100%;
+        margin-right: 12px;
+    }
+
+    .strike > span:after {
+        left: 100%;
+        margin-left: 12px;
+    }
+
+.strikegrey > span:before,
+    .strikegrey > span:after {
+        background: grey;
+    }
+
+.social {
+    color: #fff;
+    border: solid 3px;
+    border-color:rgba(170,70,190,1);
+    border-radius: 50%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 47px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+
+}
+
+.social:hover{
+  color:rgba(170,70,190,1);
+}
+
+@media only screen and (max-width: 600px) {
+  .social:hover {
+        color:black;
+  }
+}
+
+
+.form-item {
+  display:block;
+    width:100%;
+    border:0;
+    position: relative;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #bbb;
+}
+
+#portfolioblock:hover {
+    color:rgba(170,70,190,1);
+}
