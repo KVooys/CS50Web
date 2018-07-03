@@ -1,3 +1,0 @@
-{
-  "url": postgres://cqzgekgnbdrltm:53e71bc599db32293827690258b50c06c5456b6c18018693f6d7a9eece74535e@ec2-54-228-251-254.eu-west-1.compute.amazonaws.com:5432/dfo1mk3kjdq7e7
-}
