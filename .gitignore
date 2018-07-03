@@ -1,3 +1,7 @@
 .idea/
+project1/db.txt
 Pipfile
 Pipfile.lock
+flask_session/
+project1/__pycache__/
+project1/books.csv
