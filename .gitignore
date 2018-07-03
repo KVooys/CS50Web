@@ -5,3 +5,5 @@ flask_session/
 project1/__pycache__/
 project1/books.csv
 project1/db.txt
+project1/db.json
+project1/test.csv
