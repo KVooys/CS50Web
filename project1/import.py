@@ -20,7 +20,7 @@ def read_csv():
             print(row['isbn'], row['title'], row['author'], row['year'])
 
 
-def connect_to_db():
+def test_connect_to_db():
     conn = None
     try:
         conn = psycopg2.connect(host=db_host, database=db_database, user=db_user, password=db_password)
@@ -101,8 +101,24 @@ def read_books_from_table():
             conn.close()
 
 
+def drop_book_table():
+    conn = None
+    try:
+        conn = psycopg2.connect(host=db_host, database=db_database, user=db_user, password=db_password)
+        cur = conn.cursor()
+        cur.execute("DROP TABLE books")
+        conn.commit()
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+
 # read_csv()
 # create_book_table()
 # add_books_to_table()
 # read_books_from_table()
+# drop_book_table()
 
