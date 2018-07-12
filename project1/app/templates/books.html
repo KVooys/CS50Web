@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>ISBN</td>
+            <td>Title</td>
+            <td>Author</td>
+            <td>Year</td>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td><a href="{{ url_for('book', book_id=book.book_id) }}">{{ book.book_id }}</a></td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.year }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
