@@ -44,10 +44,10 @@ def create_book_table():
         cur = conn.cursor()
         test_table = """CREATE TABLE if not exists books (
                     book_id SERIAL PRIMARY KEY,
-                    isbn TEXT,
-                    title TEXT,
-                    author TEXT,
-                    year INTEGER     
+                    isbn TEXT UNIQUE NOT NULL,
+                    title TEXT NOT NULL,
+                    author TEXT NOT NULL,
+                    year INTEGER NOT NULL     
                 )"""
         cur.execute(test_table)
         cur.close()
@@ -88,7 +88,7 @@ def read_books_from_table():
     try:
         conn = psycopg2.connect(host=db_host, database=db_database, user=db_user, password=db_password)
         cur = conn.cursor()
-        cur.execute("SELECT count(distinct isbn) from books")
+        cur.execute("SELECT count(*) from books")
         row = cur.fetchone()
         while row is not None:
             print(row)
@@ -116,9 +116,68 @@ def drop_book_table():
             conn.close()
 
 
+def create_user_table():
+    conn = None
+    try:
+        conn = psycopg2.connect(host=db_host, database=db_database, user=db_user, password=db_password)
+        cur = conn.cursor()
+        test_table = """CREATE TABLE if not exists users (
+                    user_id SERIAL PRIMARY KEY,
+                    username TEXT NOT NULL,
+                    email TEXT NOT NULL,
+                    password_hash TEXT NOT NULL
+                )"""
+        cur.execute(test_table)
+        cur.close()
+        conn.commit()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+
+def read_users_from_table():
+    conn = None
+    try:
+        conn = psycopg2.connect(host=db_host, database=db_database, user=db_user, password=db_password)
+        cur = conn.cursor()
+        cur.execute("SELECT * from users")
+        row = cur.fetchone()
+        while row is not None:
+            print(row)
+            row = cur.fetchone()
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+
+def drop_user_table():
+    conn = None
+    try:
+        conn = psycopg2.connect(host=db_host, database=db_database, user=db_user, password=db_password)
+        cur = conn.cursor()
+        cur.execute("DROP TABLE users")
+        conn.commit()
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+
+
 # read_csv()
 # create_book_table()
 # add_books_to_table()
 # read_books_from_table()
+# create_user_table()
+read_users_from_table()
+# create_sample_user
 # drop_book_table()
+# drop_user_table()
 
