@@ -23,20 +23,11 @@ def books():
     return render_template("books.html", title="Books", books=books)
 
 
-@app.route("/book/<int:book_id>")
-def book(book_id):
-    book = db.execute("SELECT * from books WHERE book_id = :book_id", {"book_id": book_id}).fetchone()
-    if book is None:
-        abort(404, "This book is not in the book database")
-    else:
-        return render_template("book.html", title="Book", book=book)
-
-
-@app.route("/api/<isbn>")
-def isbn(isbn):
+@app.route("/api/<string:isbn>")
+def api(isbn):
     book = db.execute("SELECT * from books WHERE isbn = :isbn", {"isbn": isbn}).fetchone()
     if book is None:
-        abort(404, "This IBN is not in the book database.")
+        abort(404, "This ISBN is not in the book database.")
     else:
         key = Config.GOODREADS_KEY
         r = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": key, "isbns": book.isbn})
